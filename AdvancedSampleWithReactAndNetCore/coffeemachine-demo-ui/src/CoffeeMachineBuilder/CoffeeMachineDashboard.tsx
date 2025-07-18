@@ -17,6 +17,8 @@ interface ApiResponse {
   };
 }
 
+const MAX_NAME_LENGTH = 20;
+
 const CoffeeMachineDashboard: React.FC = () => {
   const [machineName, setMachineName] = useState('');
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>(['brew']); // Initialize with brewing module
@@ -113,8 +115,7 @@ const CoffeeMachineDashboard: React.FC = () => {
 
   return (
     <div className="coffee-dashboard">
-      <h2>Coffee Machine Dashboard</h2>
-      <p>Welcome to your Coffee Machine Dashboard!</p>
+      <h2>Welcome to your Coffee Machine Builder!</h2>
       <div className="input-group">
         <label htmlFor="machineName">Coffee Machine Name:</label>
         <input
@@ -124,11 +125,15 @@ const CoffeeMachineDashboard: React.FC = () => {
           onChange={handleNameChange}
           placeholder="Enter machine name"
           className="machine-name-input"
+          maxLength={MAX_NAME_LENGTH}
         />
+        <div className="input-hint">
+          {machineName.length}/{MAX_NAME_LENGTH} characters
+        </div>
       </div>
 
       <div className="features-section">
-        <h3>Select Features:</h3>
+        <label htmlFor="features">Select Features:</label>
         <div className="features-grid">
           {features.map((feature) => (
             <div key={feature.id} className="feature-item">
