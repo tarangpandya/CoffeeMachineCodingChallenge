@@ -8,6 +8,7 @@ namespace CoffeeMachine.Api.Core
 {
     public interface ICoffeeMachine
     {
+        string Name { get; }
         string Brew();
         string ToString();
     }

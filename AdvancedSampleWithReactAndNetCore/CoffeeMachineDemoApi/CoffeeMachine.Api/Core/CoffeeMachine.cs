@@ -8,8 +8,10 @@ namespace CoffeeMachine.Api.Core
 {
     public class CoffeeMachine : ICoffeeMachine
     {
-        public CoffeeMachine(List<IModule> modules)
+        public string Name { get; }
+        public CoffeeMachine(string name, List<IModule> modules)
         {
+            this.Name = name;
             Modules = modules ?? [];
         }
 
@@ -30,7 +32,7 @@ namespace CoffeeMachine.Api.Core
             if (Modules == null || !Modules.Any())
                 return string.Empty;
 
-            return $"This coffee machine has the following Module: {string.Join(", ", Modules.Select(feature => feature.Name))}";
+            return $"Coffee machine {Name} created with following Module: {string.Join(", ", Modules.Select(feature => feature.Name))}";
         }
     }
 }

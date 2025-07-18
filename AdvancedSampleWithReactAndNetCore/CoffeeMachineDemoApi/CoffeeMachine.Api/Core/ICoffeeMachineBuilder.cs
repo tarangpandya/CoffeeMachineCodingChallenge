@@ -8,6 +8,6 @@ namespace CoffeeMachine.Api.Core
     public interface ICoffeeMachineBuilder
     {
         ICoffeeMachineBuilder AddFeature(IModule module);
-        ICoffeeMachine Build();
+        ICoffeeMachine Build(string name);
     }
 }

@@ -26,11 +26,11 @@ namespace CoffeeMachine.Api.Core
             return this;
         }
 
-        public ICoffeeMachine Build()
+        public ICoffeeMachine Build(string name)
         {
             IModule brewingFeature = new BrewingModule();
             Modules.Add(brewingFeature);
-            ICoffeeMachine coffeeMachine = new CoffeeMachine(Modules);
+            ICoffeeMachine coffeeMachine = new CoffeeMachine(name, Modules);
             ResetFeatures(); // Reset features for the next build
             return coffeeMachine;
         }
